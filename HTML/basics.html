@@ -7,12 +7,40 @@
 </head>
 
 <body>
-  
+
+  <h1>HTML Table</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Contact No</th>
+        <th>Location</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>Karthick</td>
+        <td>k@gmail.com</td>
+        <td>2547569</td>
+        <td>Chennai</td>
+      </tr>
+      <tr>
+        <td>Kumar</td>
+        <td>kumar@gmail.com</td>
+        <td>752566</td>
+        <td>trichy</td>
+      </tr>
+    </tbody>
+  </table>
+
 
   <h1>HTML Forms</h1>
 
   <label>Please enter you email</label>
-  <input type="text" placeholder="Enter your Email" value="Karthick" maxlength="10" disabled />
+  <input type="text" placeholder="Enter your Email" value="Karthick" maxlength="5" />
   <br />
 
   <label>Enter your Password</label>
@@ -25,35 +53,52 @@
 
   <label>Select your Date of Birth</label>
   <input type="date" />
-  <br/>
+  <br />
 
   <label>Enter your Time</label>
   <input type="time" />
-  <br/>
+  <br />
 
   <label>Enter your Date and Time</label>
-  <input type="datetime-local"/>
+  <input type="datetime-local" />
   <br />
 
   <label>Upload any File</label>
   <input type="file" />
-  <br/>
+  <br />
 
   <label>Select any color</label>
   <input type="color" />
-  <br/>
+  <br />
 
   <label>Select your Gender</label>
-  <input type="radio" name="gender" />Male 
-  <input type="radio" name="gender"/>Female
-  <input type="radio" name="gender"/>Others
+  <input type="radio" name="gender" />Male
+  <input type="radio" name="gender" />Female
+  <input type="radio" name="gender" />Others
   <br />
 
   <label>Select known languges</label>
   <input type="checkbox" />Tamil
   <input type="checkbox" />English
   <input type="checkbox" />Hindi
-  <input type="checkbox"/>French
+  <input type="checkbox" />French
+  <br />
+
+  <label>Select your City</label>
+  <select>
+    <option disabled selected>Please select any one city</option>
+    <option>Chennai</option>
+    <option>Mumbai</option>
+    <option>Delhi</option>
+    <option>Banglore</option>
+    <option>Madurai</option>
+  </select>
+  <br />
+
+  <label>Enter your Address</label>
+  <textarea placeholder="Enter your address"></textarea>
+  <br />
+
 
   <h1>HTML Link</h1>
   <a href="./about.html">Click here to go About Page</a>
