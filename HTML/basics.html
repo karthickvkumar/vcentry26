@@ -4,6 +4,7 @@
 <head>
   <title>Basic HTML</title>
   <link href="./logo.png" rel="icon" />
+  <link href="./style.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -19,9 +20,10 @@
   2. An inline element only takes up as much width as necessary. -->
 
   <h1>HTML Iframe</h1>
-  <iframe src="./about.html" width="300" height="200"></iframe>
+  <iframe id="htmlFrame1" src="./about.html" width="300" height="200"></iframe>
   
-  <iframe src="https://www.lipsum.com/" width="300" height="200"></iframe>
+  <h2>htmlFrame</h2>
+  <iframe id="htmlFrame2" src="https://www.lipsum.com/" width="300" height="200"></iframe>
 
   <iframe width="560" height="315" src="https://www.youtube.com/embed/Bn3NujaiIQo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -143,7 +145,7 @@
     src="https://imageio.forbes.com/specials-images/imageserve/5d35eacaf1176b0008974b54/2020-Chevrolet-Corvette-Stingray/0x0.jpg?format=jpg&crop=4560,2565,x790,y784,safe&width=960"
     width="300" />
 
-  <h1>HTML List - UnOrdered List</h1>
+  <h1 class="heading-text">HTML List - UnOrdered List</h1>
   <ul>
     <li>This is simple list content</li>
     <li>This is simple list content</li>
@@ -153,7 +155,7 @@
 
   <h1>HTML List - Ordered List</h1>
   <ol>
-    <li>This is simple list content</li>
+    <li class="heading-text">This is simple list content</li>
     <li>This is simple list content</li>
     <li>This is simple list content</li>
     <li>This is simple list content</li>
@@ -173,11 +175,12 @@
     Windows Switch - Alt + Tab
   </p>
 
-  <h1>HTML Headings</h1>
+
+  <h1 id="heading" class="heading-text">HTML Headings</h1>
   <h1>This a simple heading - h1</h1>
   <h2>This a simple heading - h2</h2>
   <h3>This a simple heading - h3</h3>
-  <h4>This a simple heading - h4</h4>
+  <h4 class="heading-text">This a simple heading - h4</h4>
   <h5>This a simple heading - h5</h5>
   <h6>This a simple heading - h6</h6>
 
