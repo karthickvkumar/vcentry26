@@ -16,4 +16,29 @@ p{
 /* Class Selector */
 .heading-text{
   color: blue;
+  /* background-color: black; */
+  text-align: center;
+  /* text-decoration-line: underline;
+  text-decoration-color: black;
+  text-decoration-style: solid;
+  text-decoration-thickness: 2px; */
+  text-decoration: underline black solid 5px;
+  text-transform: capitalize;
+}
+
+.paragraph{
+  text-indent: 100px;
+  letter-spacing: 5px;
+  line-height: 3.5;
+  word-spacing: 10px;
+}
+
+.section{
+  height: 200px;
+  width: 500px;
+  background-color: blueviolet;
+}
+
+.bgcolor{
+  background-color: aquamarine;
 }
