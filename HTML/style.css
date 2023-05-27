@@ -33,12 +33,24 @@ p{
   word-spacing: 10px;
 }
 
-.section{
+.absolute-section{
   height: 200px;
   width: 500px;
   background-color: blueviolet;
 }
 
 .bgcolor{
-  background-color: aquamarine;
+  /* background-color: aquamarine; */
+}
+
+.relative-section{
+  height: 25vh;
+  width: 50vw;
+  background-color: brown;
+}
+
+.perentage-section{
+  width: 50%;
+  height: 50%;
+  background-color: black;
 }
