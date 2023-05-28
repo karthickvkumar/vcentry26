@@ -54,3 +54,44 @@ p{
   height: 50%;
   background-color: black;
 }
+
+.box-model{
+  /* border-style: solid;
+  border-width: 4px;
+  border-color: #f00; */
+  border-top-style: dashed;
+  border-bottom-style: double;
+  border-top-color: blue;
+  border-bottom-color: darkred;
+  border-bottom-width: 10px;
+}
+
+.inline-box-model{
+  /* border-style: solid; */
+  border: 10px dashed darkred;
+}
+
+.rectangle{
+  width: 500px;
+  height: 20px;
+  border: 3px solid;
+  border-radius: 20px;
+}
+
+.square{
+  width: 100px;
+  height: 100px;
+  border: 3px solid;
+  border-radius: 65px;
+}
+
+.padding{
+  border: 5px solid;
+    padding-left: 35px;
+    padding-top: 30px;
+    padding-bottom: 40px;
+    margin-left: 65px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    margin-right: 60px;
+}
