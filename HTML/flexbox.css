@@ -1,0 +1,56 @@
+.bg{
+  margin-left: 35px;
+  background-color: beige;
+}
+
+.flex-container{
+  border: 3px solid;
+  height: 85vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.flex-items{
+  border: 3px solid red;
+  width: 125px;
+  height: 125px;
+}
+
+.order-1{
+  order: 1;
+}
+.order-2{
+  order: 2;
+}
+.order-3{
+  order: 3;
+  align-self: flex-start;
+}
+.order-4{
+  order: 4;
+}
+
+/* Flex Direction -> ROW
+ 1. Justify Content - X direction 
+ 2. Align Items - Y direction
+
+ Flex Direction -> COLUMN
+  1. Justify Content - Y direction
+  2. Align Items - X direction  */
+
+  @media only screen and (min-width : 0px) and (max-width : 400px) {
+    .bg{
+      background-color: rgb(191, 0, 255);
+      color: white;
+    }
+  }
+  
+  @media only screen and (min-width : 401px) and (max-width : 650px) {
+    .bg{
+      background-color: red;
+      color: white;
+    }
+  }
