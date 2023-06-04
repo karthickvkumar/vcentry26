@@ -123,3 +123,16 @@ p{
   border: 2px solid;
   border-collapse: collapse;
 }
+
+.without-box-sizing{
+  height: 100px;
+  width: 200px;
+  border: 25px solid red;
+}
+
+.with-box-sizing{
+  height: 100px;
+  width: 200px;
+  border: 25px solid red;
+  box-sizing: border-box;
+}

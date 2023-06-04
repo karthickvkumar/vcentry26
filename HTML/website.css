@@ -12,6 +12,8 @@ body{
 .main-heading{
   border: 2px solid red;
   height: 35%;
+  display: flex;
+  flex-direction: row;
 }
 
 .main-desc{
@@ -24,4 +26,81 @@ body{
 .main-footer{
   border: 2px solid red;
   height: 35%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.main-image{
+  border: 3px solid blue;
+  height: 100%;
+  box-sizing: border-box;
+  width: 25%;
+}
+
+.main-headsection{
+  border: 3px solid blue;
+  height: 100%;
+  box-sizing: border-box;
+  width: 75%;
+}
+
+.heading-content{
+  border: 3px solid;
+  box-sizing: border-box;
+  height: 45%;
+  display: flex;
+  flex-direction: row;
+}
+
+.heading-para{
+  border: 3px solid;
+  box-sizing: border-box;
+  height: 55%;
+}
+
+.circle-image{
+  border: 3px solid red;
+    width: 15%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.header-text{
+  border: 3px solid red;
+  width: 75%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.header-date{
+  border: 3px solid red;
+  width: 10%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.footer-section{
+  border: 3px solid blue;
+    width: 25%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.footer-image{
+  border: 2px solid;
+    box-sizing: border-box;
+    height: 60%;
+}
+
+.footer-heading{
+  border: 2px solid;
+  box-sizing: border-box;
+  height: 20%;
+}
+
+.footer-content{
+  border: 2px solid;
+  box-sizing: border-box;
+  height: 20%;
 }
