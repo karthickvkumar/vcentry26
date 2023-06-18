@@ -329,3 +329,47 @@ function printMessage(){
   // alert(main_welcome_message)
   alert(future_value);
 }
+
+/*
+Timers 
+setTimeout - It is used to delay the code execution 
+syntax
+setTimeout(function(){
+  coding scenario 
+}, time_millisecond);
+
+1000 millisecond = 1 second
+
+function(){  -- Callback / Annonymonus Function 
+  
+}
+*/
+
+function loadAfterTime(){
+  alert("It's going to load...");
+
+  setTimeout(function(){
+    alert("This will run after 5 seconds");
+  }, 5000);
+}
+
+/*
+setInterval - It is used to run a code in the given time interval 
+syntax 
+setInterval(function(){
+  coding scenarios
+}, time_millisecond);
+*/
+var timeId;
+
+function runAfterTimeInterval(){
+  timeId = setInterval(function(){
+   alert("This message will display after every 5 second"); 
+  }, 5000);
+}
+
+// clearInterval(timerId) -- To stop set interval 
+
+function stopSetInterval(){
+  clearInterval(timeId);
+}
