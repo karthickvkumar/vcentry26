@@ -483,3 +483,9 @@ Run 2nd Command
 npm install -g npx
 
 */
+/*
+To create New Project in React JS
+
+npx create-react-app learning-react 
+
+*/
