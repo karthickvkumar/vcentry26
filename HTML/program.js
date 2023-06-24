@@ -373,3 +373,113 @@ function runAfterTimeInterval(){
 function stopSetInterval(){
   clearInterval(timeId);
 }
+
+/*
+Storage -> It is used to store minimal information in browser based on Domain URL
+Capacity (Space) -> 5 MB to 13 MB (depends on browser)
+Types of Storage 
+  1. Local Storage -> Permanent Storage in browser
+  2. Session Storage -> Temporay Storage in browser (Stored value will cleared once browser tab is closed)
+*/
+
+/*
+Local Storage : 
+
+There a 4 types of Actions in local storage -> Insert value, Read value, Edit value, Delete value
+
+Insert value to Local Storage :
+syntax :
+localStorage.setItem("key", value);
+key -> similar to variable name, its should contains only a-z, A-Z, 0-9, _, $
+
+*/
+
+localStorage.setItem("email_id", "karthick@live.in");
+
+/*
+Read value to Local Storage :
+syntax :
+localStorage.getItem("key");
+*/
+
+localStorage.getItem("email_id");
+
+/*
+Delete value from Local storage:
+ 1. Delete a particular value 
+ 2. Delete the entire local storage 
+ 
+
+Delete a particular value
+syntax:
+localStorage.removeItem("key");
+
+Delete the entire local storage
+syntax:
+localStorage.clear();
+*/
+/*
+Session Storage : 
+
+There a 4 types of Actions in session storage -> Insert value, Read value, Edit value, Delete value
+
+Insert value to session Storage :
+syntax :
+sessionStorage.setItem("key", value);
+key -> similar to variable name, its should contains only a-z, A-Z, 0-9, _, $
+
+Read value to Session Storage :
+syntax :
+sessionStorage.getItem("key");
+
+Delete value from Session storage:
+ 1. Delete a particular value 
+ 2. Delete the entire session storage 
+ 
+
+Delete a particular value
+syntax:
+sessionStorage.removeItem("key");
+
+Delete the entire local storage
+syntax:
+sessionStorage.clear();
+*/
+
+var studentDetail = {name: 'mr.abc', age: 24, roll_no: 12455};
+localStorage.setItem("student", JSON.stringify(studentDetails));
+
+JSON.parse(localStorage.getItem("student"));
+/*
+JSON
+{
+  "name" : "abc",
+  "age" : 14
+}
+*/
+
+// Major Version . Minor Version . Patch Version 
+
+/*
+
+Insall Node JS
+
+Windows - https://nodejs.org/en/download
+
+Linux 
+sudo apt update
+
+sudo apt install curl dirmngr apt-transport-https lsb-release ca-certificates
+
+curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+
+sudo apt install -y nodejs
+
+*/
+
+/*
+Run 2nd Command
+
+npm install -g npx
+
+*/
