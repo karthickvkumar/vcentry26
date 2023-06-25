@@ -475,6 +475,8 @@ curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 
 sudo apt install -y nodejs
 
+node -v
+
 */
 
 /*
@@ -488,4 +490,13 @@ To create New Project in React JS
 
 npx create-react-app learning-react 
 
+To Run a React JS Project 
+
+npm start
+*/
+/*
+React Router DOM
+https://www.npmjs.com/package/react-router-dom
+Command 
+npm i react-router-dom
 */
