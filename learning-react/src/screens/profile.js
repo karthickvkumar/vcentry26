@@ -1,4 +1,5 @@
 import React from 'react';
+import { Outlet, NavLink } from 'react-router-dom';
 
 const ProfileScreen = () => {
   return (
@@ -8,8 +9,16 @@ const ProfileScreen = () => {
       </div>
       <div className='pofile-content'>
       
-        <div className='profile-sidebar'></div>
-        <div className='profile-sub-screens'></div>
+        <div className='profile-sidebar'>
+          <NavLink to="/profile/basic">Basic Profile Screen</NavLink>
+          <br/>
+          <NavLink to="/profile/account">Account Profile Screen</NavLink>
+          <br/>
+          <NavLink to="/profile/setting">Setting Profile Screen</NavLink>
+        </div>
+        <div className='profile-sub-screens'>
+          <Outlet></Outlet>
+        </div>
       </div>
     </div>
   );

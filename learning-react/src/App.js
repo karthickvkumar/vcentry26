@@ -8,6 +8,10 @@ import LandingScreen from "./screens/landing";
 import PageNotFoundScreen from "./screens/page-not-found";
 import ProfileScreen from "./screens/profile";
 
+import BasicProfileScreen from "./screens/basic-profile";
+import AccountProfileScreen from "./screens/account-profile";
+import SettingProfileScreen from "./screens/setting-profile";
+
 import "./css/style.css";
 
 const App = () => {
@@ -18,7 +22,11 @@ const App = () => {
         <Route path="home" element={<HomeScreen></HomeScreen>}></Route>
         <Route path="login" element={<LoginScreen></LoginScreen>}></Route>
         <Route path="contact" element={<ContactScreen></ContactScreen>}></Route>
-        <Route path="profile" element={<ProfileScreen></ProfileScreen>}></Route>
+        <Route path="profile" element={<ProfileScreen></ProfileScreen>}>
+            <Route path="basic" element={<BasicProfileScreen></BasicProfileScreen>}></Route>
+            <Route path="account" element={<AccountProfileScreen></AccountProfileScreen>}></Route>
+            <Route path="setting" element={<SettingProfileScreen></SettingProfileScreen>}></Route>
+        </Route>
 
         <Route path="*" element={<PageNotFoundScreen></PageNotFoundScreen>}></Route>
       </Routes>
