@@ -2,3 +2,25 @@
   color: red;
   font-size: 34px;
 }
+
+.profile-header{
+  border: 2px solid red;
+}
+
+.pofile-content{
+  border: 2px solid red;
+    height: 85vh;
+    display: flex;
+}
+
+.profile-sidebar{
+  border: 2px solid red;
+    width: 20%;
+    height: 100%;
+}
+
+.profile-sub-screens{
+  border: 2px solid red;
+    width: 80%;
+    height: 100%;
+}
