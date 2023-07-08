@@ -23,6 +23,8 @@ const LandingScreen = () => {
       <NavLink to="/login">Click here for Login Screen</NavLink>
       <br/>
       <NavLink to="/profile">Click here for Profile Screen</NavLink>
+      <br/>
+      <NavLink to="/todo">Go to ToDO Screen</NavLink>
     </div>
   )
 }
