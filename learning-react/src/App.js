@@ -44,8 +44,20 @@ export default App;
 
 // }
 
+// callback / Annoynonus Function 
+
+// function (){
+
+// }
+
 // ES6 
 // const function_name = () => {
+  
+// }
+
+// callback / Annoynonus Function 
+
+// () => {
   
 // }
 

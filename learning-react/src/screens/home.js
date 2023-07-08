@@ -5,7 +5,7 @@ const HomeScreen = () => {
 
   const message = "This is a Home Screen";
 
-  var details = {
+  let details = {
     userName : "Mr.John",
     address : "ECR Road, Chennai",
     contact : 9415252
@@ -13,19 +13,64 @@ const HomeScreen = () => {
 
   let nameList = ["Tarun", "Sandy", "Muthu", "Suman", "Ganesan", "Nirmal"];
 
+  let studentList = [
+    {
+        "userName": "fsdfdsfsd",
+        "address": "ECR Road, Chennai",
+        "contact": 87787
+    },
+    {
+        "userName": "wer4werwe",
+        "address": "ECR Road, Chennai",
+        "contact": 9415252
+    },
+    {
+        "userName": "dfgfdgn",
+        "address": "ECR Road, Chennai",
+        "contact": 565
+    },
+    {
+        "userName": "qwqeqwe",
+        "address": "ECR Road, Chennai",
+        "contact": 24234
+    },
+    {
+        "userName": "szsczxcxzc",
+        "address": "ECR Road, Chennai",
+        "contact": 53454
+    },
+    {
+        "userName": "iopolukiun",
+        "address": "ECR Road, Chennai",
+        "contact": 345345
+    }
+]
   const navigate = useNavigate(); 
 
   const goToContactScreen = () => {
     navigate("/contact");
   }
 
+  const ListData = studentList.map( (value, index) => {
+    return (
+      <div className="map-box">
+        <h3>{value.userName}</h3>
+        <h3>{value.address}</h3>
+        <h3>{value.contact}</h3>
+      </div>
+    )
+  });
+
   return(
     <div>
       <h1>{message}</h1>
+
       
       <h2>The user name is <span className="text-highlight">{details.userName}</span> and his location {details.address}</h2>
       
       <h2>The students list - {nameList[0]} , {nameList[1]}, {nameList[2]}, {nameList[3]}, {nameList[4]} and {nameList[5]}</h2>
+
+      {ListData}
       
       <NavLink to="/">Back to Landing Screen</NavLink>
       <br/>
@@ -83,5 +128,14 @@ arrayVariableName.shift();
 3. splice - To remove particular value from Array
 syntax:
 arrayVariableName.splice(index, numberOfCount);
+
+
+
+Array Map 
+syntax
+
+arrayVariableName.map( (value, index) => {
+  // coding logic
+} );
 
 */

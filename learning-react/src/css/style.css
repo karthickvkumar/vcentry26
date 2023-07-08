@@ -28,3 +28,9 @@
 .text-highlight{
   color: red;
 }
+
+.map-box{
+  border: 3px solid red;
+  width: 200px;
+  margin-left: 50px;
+}
