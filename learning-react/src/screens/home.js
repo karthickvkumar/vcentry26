@@ -44,7 +44,7 @@ const HomeScreen = () => {
         "address": "ECR Road, Chennai",
         "contact": 345345
     }
-]
+ ]
   const navigate = useNavigate(); 
 
   const goToContactScreen = () => {
@@ -53,13 +53,19 @@ const HomeScreen = () => {
 
   const ListData = studentList.map( (value, index) => {
     return (
-      <div className="map-box">
+      <div className="map-box" key={index}>
         <h3>{value.userName}</h3>
         <h3>{value.address}</h3>
         <h3>{value.contact}</h3>
       </div>
     )
   });
+
+  const NameListData = nameList.map((value, index) => {
+    return (
+      <li key={index}>{value}</li>
+    )
+  })
 
   return(
     <div>
@@ -68,6 +74,10 @@ const HomeScreen = () => {
       
       <h2>The user name is <span className="text-highlight">{details.userName}</span> and his location {details.address}</h2>
       
+      <ol>
+        {NameListData}
+      </ol>
+
       <h2>The students list - {nameList[0]} , {nameList[1]}, {nameList[2]}, {nameList[3]}, {nameList[4]} and {nameList[5]}</h2>
 
       {ListData}

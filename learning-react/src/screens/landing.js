@@ -1,10 +1,23 @@
-import React from "react";
+import React, {useState} from "react";
 import { NavLink } from "react-router-dom";
 
 const LandingScreen = () => {
+
+  // const [ stateVariable, stateFunction ] = useState(initalValue);
+  // stateVariable = variable name
+  // stateFunction = Function name
+
+  const [ message, updateMessage ] = useState("");
+  
+  const onChangeTextArea = (event) => {
+    updateMessage(event.target.value);
+  }
+  
   return(
     <div>
-      <h1>Welcome to React JS Project</h1>
+      <h1>Welcome to React JS Project - {message}</h1>
+      <textarea onChange={onChangeTextArea}></textarea>
+      <br />
       <NavLink to="/home">Go to Home Screen</NavLink>
       <br/>
       <NavLink to="/login">Click here for Login Screen</NavLink>
