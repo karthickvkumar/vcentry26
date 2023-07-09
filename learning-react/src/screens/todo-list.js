@@ -11,18 +11,27 @@ const TodoListScreen = () => {
 
   const addToDoMessage = () => {
     updateToDoList([...todoList, message]);
+    updateMessage("");
+  }
+
+  const deleteToDoMessage = (index) => {
+    todoList.splice(index, 1);
+    updateToDoList([...todoList]);
   }
 
   const toDoResult = todoList.map( (value, index) => {
     return(
-      <li key={index}>{value}</li>
+      <li key={index}>
+        <span>{value}</span>
+        <button onClick={() => deleteToDoMessage(index)}>X</button>
+      </li>
     )
   })
 
   return (
     <div>
       <h2>Enter your ToDo List</h2>
-      <input type='text' placeholder='Enter ToDo Message' onChange={onHandleInput} />
+      <input type='text' placeholder='Enter ToDo Message' onChange={onHandleInput} value={message} />
       <button onClick={() => addToDoMessage()}>Add Message</button>
       <ol>
         {toDoResult}
