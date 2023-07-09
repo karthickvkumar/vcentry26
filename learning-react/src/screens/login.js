@@ -9,14 +9,10 @@ const LoginScreen = () => {
   })
 
   const handleInput = (event) => {
-    console.log(event.target.value, event.target.id);
+    //console.log(event.target.value, event.target.id);
+    updateLoginForm({...loginForm, [event.target.id] :event.target.value });
     
-    if(event.target.id == "username"){
-      updateLoginForm({...loginForm, username :event.target.value });
-    }
-    else{
-      updateLoginForm({...loginForm, password :event.target.value });
-    }
+ 
   }
 
   const submitLogin = () => {
