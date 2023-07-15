@@ -9,14 +9,28 @@ const RegisterScreen = () => {
     Password : "",
     Date_Of_Birth : "",
     Gender : "",
-    Hobbies : "",
+    Hobbies : [],
     Address : "",
     City : ""
   })
 
   const handleInput = (event) => {
-    // console.log(event.target.id, event.target.value);
-    updateAccount({...account, [event.target.id] : event.target.value});
+    if(event.target.id == "Hobbies"){
+
+      if(event.target.checked){
+        // insert hobbies
+        account.Hobbies.push(event.target.value);
+      }
+      else{
+        // remove hobbies
+        const index = account.Hobbies.indexOf(event.target.value);
+        account.Hobbies.splice(index, 1);
+      }
+
+    }
+    else{
+      updateAccount({...account, [event.target.id] : event.target.value});
+    }
   }
 
   const submitAccount = () => {
