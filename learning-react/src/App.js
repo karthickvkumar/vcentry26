@@ -13,6 +13,7 @@ import AccountProfileScreen from "./screens/account-profile";
 import SettingProfileScreen from "./screens/setting-profile";
 
 import TodoListScreen from "./screens/todo-list";
+import RegisterScreen from "./screens/register";
 
 import "./css/style.css";
 
@@ -31,6 +32,7 @@ const App = () => {
         </Route>
 
         <Route path="todo" element={<TodoListScreen></TodoListScreen>}></Route>
+        <Route path="signin" element={<RegisterScreen></RegisterScreen>}></Route>
 
         <Route path="*" element={<PageNotFoundScreen></PageNotFoundScreen>}></Route>
       </Routes>

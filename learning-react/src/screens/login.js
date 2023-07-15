@@ -4,15 +4,13 @@ import { NavLink } from "react-router-dom";
 const LoginScreen = () => {
 
   const [ loginForm, updateLoginForm ] = useState({
-    username : "",
+    UserName : "",
     password : ""
   })
 
   const handleInput = (event) => {
     //console.log(event.target.value, event.target.id);
     updateLoginForm({...loginForm, [event.target.id] :event.target.value });
-    
- 
   }
 
   const submitLogin = () => {
@@ -24,7 +22,7 @@ const LoginScreen = () => {
       <h1>This is a Login Screen</h1>
       <div>
         <label>Enter your UserName</label>
-        <input type="text" placeholder="Enter username" id="username" onChange={handleInput} />
+        <input type="text" placeholder="Enter username" id="UserName" onChange={handleInput} />
       </div>
       <div>
         <label>Enter your Password</label>
