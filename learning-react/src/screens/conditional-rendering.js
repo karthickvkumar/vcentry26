@@ -4,6 +4,8 @@ const ConditionalRendering = () => {
 
   const [ genderOthers, updateGenderOthers ] = useState(false);
 
+  const [ bulb, updateBulb ] = useState(true);
+
   const changeGender = (event) => {
     if(event.target.value === 'others'){
       updateGenderOthers(true);
@@ -13,8 +15,27 @@ const ConditionalRendering = () => {
    }
   }
 
+  const turnONBulb = () => {
+    updateBulb(false);
+  }
+
+  const turnOffBulb = () => {
+    updateBulb(true);
+  }
+
   return (
     <div>
+
+      <div>
+        {
+          bulb ?
+          <img src={require("../images/pic_bulboff.gif")} onClick={() => turnONBulb()} />
+          :
+          <img src={require("../images/pic_bulbon.gif")} onClick={() => turnOffBulb()} />
+        }
+      </div>
+
+
       <div className='content'>
         <label>Select your Gender: </label>
         <input type='radio' value="male" name='gender' onChange={changeGender}/>Male
