@@ -15,7 +15,7 @@ const RegisterScreen = () => {
   })
 
   const handleInput = (event) => {
-    if(event.target.id == "Hobbies"){
+    if(event.target.id === "Hobbies"){
 
       if(event.target.checked){
         // insert hobbies

@@ -27,6 +27,11 @@ const LandingScreen = () => {
       <NavLink to="/todo">Go to ToDO Screen</NavLink>
       <br/>
       <NavLink to="/signin">Go to Register Screen</NavLink>
+      <br/>
+      <NavLink to="/image">Go to Conditional Rendering</NavLink>
+
+      <br/>
+      
     </div>
   )
 }
