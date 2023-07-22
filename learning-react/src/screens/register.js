@@ -12,7 +12,9 @@ const RegisterScreen = () => {
     Hobbies : [],
     Address : "",
     City : ""
-  })
+  });
+
+  const [passwordVisiblity, UpatePasswordVisblity] = useState(true);
 
   const handleInput = (event) => {
     if(event.target.id === "Hobbies"){
@@ -37,6 +39,14 @@ const RegisterScreen = () => {
     console.log(account);
   }
 
+  const makePasswordVisible = () => {
+    UpatePasswordVisblity(false);
+  }
+
+  const makePasswordHide = () => {
+    UpatePasswordVisblity(true);
+  }
+
   return (
     <div>
       <h2>Create a New Account</h2>
@@ -54,7 +64,15 @@ const RegisterScreen = () => {
       </div>
       <div className="space">
         <label className="label">Enter Password</label>
-        <input type="text" placeholder="Password" className='textbox' id="Password" onChange={handleInput}/>
+        <input type={passwordVisiblity ? "password" : "text"} placeholder="Password" className='textbox' id="Password" onChange={handleInput}/>
+        
+        {
+          passwordVisiblity ?
+          <img src={require("../images/close-eye.png")} width="16" onClick={() => makePasswordVisible()}/>
+          :
+          <img src={require("../images/open-eye.png")} width="16" onClick={() => makePasswordHide()} />
+        }
+        
       </div>
       <div className="space">
         <label className="label">Select Date of Birth</label>
