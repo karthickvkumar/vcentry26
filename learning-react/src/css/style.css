@@ -58,3 +58,7 @@
   border: 2px solid;
   padding: 25px;
 }
+
+.error-msg{
+  color: red;
+}
