@@ -4,6 +4,7 @@ import axios from 'axios';
 const BasicProfileScreen = () => {
 
   const [ profileData, updateProfileData ] = useState([]);
+  const [ infoData, updateInfoData ] = useState([]);
 
   const loadUserProfile = () => {
     const url = "https://reqres.in/api/users?page=2"
@@ -18,6 +19,31 @@ const BasicProfileScreen = () => {
       })
   }
 
+  const loadInformation = () => {
+    const url = "https://reqres.in/api/unknown"
+    axios.get(url)
+      .then((response) => {
+        updateInfoData(response.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }
+
+  var listInfo = infoData.map((value, index) => {
+    return(
+      <tr key={index}>
+        <td>{value.id}</td>
+        <td>
+          <span>Code : {value.color}</span>
+          <span className='small-box' style={{ backgroundColor : value.color}}></span>
+        </td>
+        <td>{value.name}</td>
+        <td>{value.year}</td>
+      </tr>
+    )
+  })
+  
   var list = profileData.map((value, index) => {
     return(
       <tr key={index}>
@@ -48,6 +74,22 @@ const BasicProfileScreen = () => {
         </thead>
         <tbody>
           { list }
+        </tbody>
+      </table>
+
+      <h2>List Information</h2>
+      <button onClick={() => loadInformation()}>Load Information</button>
+      <table id="customers">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Color</th>
+            <th>Name</th>
+            <th>Year</th>
+          </tr>
+        </thead>
+        <tbody>
+          { listInfo }
         </tbody>
       </table>
     </div>
