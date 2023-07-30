@@ -14,7 +14,7 @@ app.use(cors({
 app.use(express.json());
 
 // http://localhost:4000/api/list
-app.get("/api/list", (reqest, response) => {
+app.get("/api/list", (request, response) => {
   const studentList = ["Muthu", "Suman", "Vinod", "Sandy", "Tharun"];
 
   response.status(200).send(studentList);
