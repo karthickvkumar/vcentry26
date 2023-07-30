@@ -15,6 +15,8 @@ const ProfileScreen = () => {
           <NavLink to="/profile/account">Account Profile Screen</NavLink>
           <br/>
           <NavLink to="/profile/setting">Setting Profile Screen</NavLink>
+          <br/>
+          <NavLink to="/profile/login">Login Profile Screen</NavLink>
         </div>
         <div className='profile-sub-screens'>
           <Outlet></Outlet>

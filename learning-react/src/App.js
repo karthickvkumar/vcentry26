@@ -15,6 +15,7 @@ import SettingProfileScreen from "./screens/setting-profile";
 import TodoListScreen from "./screens/todo-list";
 import RegisterScreen from "./screens/register";
 import ConditionalRendering from "./screens/conditional-rendering";
+import LoginProfile from "./screens/login-profile";
 
 import "./css/style.css";
 
@@ -30,6 +31,7 @@ const App = () => {
             <Route path="basic" element={<BasicProfileScreen></BasicProfileScreen>}></Route>
             <Route path="account" element={<AccountProfileScreen></AccountProfileScreen>}></Route>
             <Route path="setting" element={<SettingProfileScreen></SettingProfileScreen>}></Route>
+            <Route path="login" element={<LoginProfile></LoginProfile>}></Route>
         </Route>
 
         <Route path="todo" element={<TodoListScreen></TodoListScreen>}></Route>
