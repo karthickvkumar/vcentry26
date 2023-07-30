@@ -6,6 +6,20 @@ const app = express();
 
 const server = http.createServer(app);
 
+app.use(cors({
+  credentials : true,
+  origin : "*"
+}));
+
+app.use(express.json());
+
+// http://localhost:4000/api/list
+app.get("/api/list", (reqest, response) => {
+  const studentList = ["Muthu", "Suman", "Vinod", "Sandy", "Tharun"];
+
+  response.status(200).send(studentList);
+});
+
 
 const portNumber = 4000;
 server.listen(portNumber, () => {
