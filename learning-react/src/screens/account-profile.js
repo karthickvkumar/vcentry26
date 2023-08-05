@@ -8,12 +8,14 @@ const AccountProfileScreen = () => {
     location : ""
   });
 
+  const [studentList, updateStudentList] = useState([])
+
   const loadStudent = () => {
     const url = "http://localhost:4000/api/list";
 
     axios.get(url)
       .then((response) => {
-        console.log(response.data);
+        updateStudentList(response.data);
       })
       .catch((error) => {
         console.error(error);
@@ -37,6 +39,15 @@ const AccountProfileScreen = () => {
       })
   }
 
+  const list = studentList.map((value, index) => {
+    return(
+        <div className='user-content'>
+          <h3>{value.name}</h3>
+          <span>{value.location}</span>
+        </div>
+    )
+  })
+
   return (
     <div>
       <h2>This is a Account Profile Screen</h2>
@@ -51,6 +62,10 @@ const AccountProfileScreen = () => {
         <input type="text" id="location" placeholder='Enter Location' onChange={onHandleInput} />
       </div>
       <button onClick={() => submitStudent()}>Submit Student</button>
+      
+      <div className='user-wrap'>
+        {list}
+      </div>
     </div>
   );
 };

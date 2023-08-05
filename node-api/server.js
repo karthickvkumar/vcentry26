@@ -20,7 +20,7 @@ const studentList = [
   { name: "Suman", location: "Chennai" },
   { name: "Vinod", location: "Chennai" },
   { name: "Sandy", location: "Chennai" },
-  { name: "Tharun", location: "Chennai" },
+  { name: "Tharun", location: "Chennai" }
 ];
 
 // http://localhost:4000/api/list

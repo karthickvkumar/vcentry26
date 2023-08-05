@@ -93,3 +93,18 @@
     border: 2px solid;
     margin-left: 15px;
 }
+
+.user-wrap{
+  border: 5px solid;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.user-content{
+  width: 100px;
+    height: 100px;
+    border: 3px solid;
+    margin: 15px;
+}
