@@ -41,7 +41,7 @@ const AccountProfileScreen = () => {
 
   const list = studentList.map((value, index) => {
     return(
-        <div className='user-content'>
+        <div className='user-content' key={index}>
           <h3>{value.name}</h3>
           <span>{value.location}</span>
         </div>
