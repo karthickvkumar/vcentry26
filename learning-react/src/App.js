@@ -17,6 +17,9 @@ import RegisterScreen from "./screens/register";
 import ConditionalRendering from "./screens/conditional-rendering";
 import LoginProfile from "./screens/login-profile";
 
+import EmailSendPage from "./screens/email-verify";
+import VerifyEmailPage from "./screens/verify-process";
+
 import "./css/style.css";
 
 const App = () => {
@@ -37,6 +40,10 @@ const App = () => {
         <Route path="todo" element={<TodoListScreen></TodoListScreen>}></Route>
         <Route path="signin" element={<RegisterScreen></RegisterScreen>}></Route>
         <Route path="image" element={<ConditionalRendering></ConditionalRendering>}></Route>
+
+        <Route path="email" element={<EmailSendPage></EmailSendPage>}></Route>
+        <Route path="verify/:token" element={<VerifyEmailPage></VerifyEmailPage>}></Route>
+
 
         <Route path="*" element={<PageNotFoundScreen></PageNotFoundScreen>}></Route>
       </Routes>
