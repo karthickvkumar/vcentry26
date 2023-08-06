@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+import NavbarComponent from '../components/navbar';
+
 const AccountProfileScreen = () => {
 
   const [ studentForm, updateStudentForm ] = useState({
@@ -52,7 +54,7 @@ const AccountProfileScreen = () => {
     <div>
       <h2>This is a Account Profile Screen</h2>
       <button onClick={() => loadStudent()}>Load Student</button>
-
+      <NavbarComponent></NavbarComponent>
       <div>
         <label>Enter your Name :</label>
         <input type="text" id="name" placeholder='Enter Name' onChange={onHandleInput} />

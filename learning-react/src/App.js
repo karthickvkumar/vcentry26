@@ -19,7 +19,9 @@ import LoginProfile from "./screens/login-profile";
 
 import EmailSendPage from "./screens/email-verify";
 import VerifyEmailPage from "./screens/verify-process";
-
+// npm i bootstrap@5.3.1 -s
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/js/bootstrap";
 import "./css/style.css";
 
 const App = () => {

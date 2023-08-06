@@ -3,7 +3,7 @@ import { Outlet, NavLink } from 'react-router-dom';
 
 const ProfileScreen = () => {
   return (
-    <div className='container'>
+    <div className='containers'>
       <div className='profile-header'> 
         <h1>This is a Profile Screen</h1>
       </div>
