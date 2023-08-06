@@ -113,3 +113,7 @@
   color: #dc3545;
   font-size: 15px;
 }
+
+.custome-font{
+  font-family: 'Dancing Script', cursive !important;
+}

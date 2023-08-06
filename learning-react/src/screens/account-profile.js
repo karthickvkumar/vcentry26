@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import NavbarComponent from '../components/navbar';
@@ -10,18 +10,27 @@ const AccountProfileScreen = () => {
     location : ""
   });
 
+  useEffect(() => {
+    loadStudent();
+  }, []);
+
   const [studentList, updateStudentList] = useState([])
 
   const loadStudent = () => {
-    const url = "http://localhost:4000/api/list";
-
-    axios.get(url)
-      .then((response) => {
-        updateStudentList(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      })
+    try{
+      const url = "http://localhost:4000/api/list";
+  
+      axios.get(url)
+        .then((response) => {
+          updateStudentList(response.data);
+        })
+        .catch((error) => {
+          console.error(error);
+        })
+    }
+    catch(error){
+      alert("Somethings went wrong, pls contact admin");
+    }
   }
 
   const onHandleInput = (event) => {
@@ -35,6 +44,21 @@ const AccountProfileScreen = () => {
     axios.post(url, studentForm)
       .then((response) => {
         alert(response.data);
+        loadStudent();
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }
+
+  const deleteUser = (value) =>{
+    // console.log(value);
+    const url = "http://localhost:4000/api/delete/" + value.name;
+
+    axios.delete(url)
+      .then((response) => {
+        alert(response.data);
+        loadStudent();
       })
       .catch((error) => {
         console.log(error);
@@ -46,13 +70,14 @@ const AccountProfileScreen = () => {
         <div className='user-content' key={index}>
           <h3>{value.name}</h3>
           <span>{value.location}</span>
+          <button className='btn btn-danger' onClick={() => deleteUser(value)}>X</button>
         </div>
     )
   })
 
   return (
     <div>
-      <h2>This is a Account Profile Screen</h2>
+      <h2 className='custome-font'>This is a Account Profile Screen</h2>
       <button onClick={() => loadStudent()}>Load Student</button>
       <NavbarComponent></NavbarComponent>
       <div>

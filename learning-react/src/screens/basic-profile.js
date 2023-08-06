@@ -1,10 +1,14 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
 const BasicProfileScreen = () => {
 
   const [ profileData, updateProfileData ] = useState([]);
   const [ infoData, updateInfoData ] = useState([]);
+
+  useEffect(() => {
+    loadUserProfile();
+  }, []);
 
   const loadUserProfile = () => {
     const url = "https://reqres.in/api/users?page=2"
