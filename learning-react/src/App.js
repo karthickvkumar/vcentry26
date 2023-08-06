@@ -22,6 +22,9 @@ import VerifyEmailPage from "./screens/verify-process";
 // npm i bootstrap@5.3.1 -s
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap";
+
+//npm i bootstrap-icons -s
+import "bootstrap-icons/font/bootstrap-icons.css";
 import "./css/style.css";
 
 const App = () => {

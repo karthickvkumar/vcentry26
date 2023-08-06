@@ -5,7 +5,10 @@ const NavbarComponent = () => {
     <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary bg-primary" data-bs-theme="dark">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">Navbar w/ text</a>
+        <a className="navbar-brand" href="#">
+          Navbar
+          <i class="bi bi-house"></i>
+        </a>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -15,7 +18,7 @@ const NavbarComponent = () => {
               <a className="nav-link active" aria-current="page" href="#">Home</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Features</a>
+              <a className="nav-link" href="#">Features <i class="bi bi-calendar2-check calander-icon"></i></a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">Pricing</a>
