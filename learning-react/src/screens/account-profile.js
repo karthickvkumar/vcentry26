@@ -10,6 +10,8 @@ const AccountProfileScreen = () => {
     location : ""
   });
 
+  const [ editUser, updateEditUser] = useState(undefined);
+
   useEffect(() => {
     loadStudent();
   }, []);
@@ -65,12 +67,39 @@ const AccountProfileScreen = () => {
       })
   }
 
+  const rewriteUserInfo = (index) => {
+    updateEditUser(index);
+  }
+
+  const undoWriteUserInfo = () => {
+    updateEditUser(undefined);
+  }
+
   const list = studentList.map((value, index) => {
     return(
         <div className='user-content' key={index}>
-          <h3>{value.name}</h3>
-          <span>{value.location}</span>
-          <button className='btn btn-danger' onClick={() => deleteUser(value)}>X</button>
+          {editUser === index ? 
+            <div>
+              <input type='text' className='input' />
+              <input type='text' className='input'/>
+            </div>
+            :
+            <div>
+              <h3>{value.name}</h3>
+              <span>{value.location}</span>
+            </div>
+            }
+          <div>
+          {editUser === index ? 
+            <i class="bi bi-check-circle-fill" onClick={() => undoWriteUserInfo()}></i>
+            :
+            <i class="bi bi-pencil-fill" onClick={() => rewriteUserInfo(index)}></i>
+          }
+
+
+            <i class="bi bi-trash-fill" onClick={() => rewriteUserInfo(value)}></i>
+
+          </div>
         </div>
     )
   })

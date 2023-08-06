@@ -117,3 +117,7 @@
 .custome-font{
   font-family: 'Dancing Script', cursive !important;
 }
+
+.input{
+  width : 100%;
+}

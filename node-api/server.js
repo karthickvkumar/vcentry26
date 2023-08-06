@@ -44,7 +44,7 @@ app.delete("/api/delete/:name", (request, response) => {
      return value.name === name
    });
 
-   if(index > -1){
+   if(index > -1) {
     studentList.splice(index, 1);
     response.status(200).send("Successfully deleted");
    }
