@@ -37,6 +37,22 @@ app.post("/api/create/list", (request, response) => {
   response.status(200).send("Student profile has been Created");
 })
 
+// http://localhost:4000/api/delete/karthick
+app.delete("/api/delete/:name", (request, response) => {
+  var name = request.params.name;
+  var index = studentList.findIndex((value, index) => {
+     return value.name === name
+   });
+
+   if(index > -1){
+    studentList.splice(index, 1);
+    response.status(200).send("Successfully deleted");
+   }
+   else{
+    response.status(400).send("Invalid User Name or Selection");
+   }
+});
+
 
 const portNumber = 4000;
 server.listen(portNumber, () => {
