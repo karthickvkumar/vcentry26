@@ -77,3 +77,10 @@ const portNumber = 4000;
 server.listen(portNumber, () => {
   console.log("Node is running on port number 4000");
 });
+
+/*
+Task API
+GET all Users - https://dummyjson.com/users
+
+GET Single User - https://dummyjson.com/users/1
+*/
