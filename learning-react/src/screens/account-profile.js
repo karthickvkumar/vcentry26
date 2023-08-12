@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 import NavbarComponent from '../components/navbar';
 
 const AccountProfileScreen = () => {
+
+  const navigate = useNavigate();
 
   const [ studentForm, updateStudentForm ] = useState({
     name : "",
@@ -93,9 +96,13 @@ const AccountProfileScreen = () => {
       })
   }
 
+  const loadUser = (index) => {
+    navigate("/user/profile/" + index);
+  }
+
   const list = studentList.map((value, index) => {
     return(
-        <div className='user-content' key={index}>
+        <div className='user-content' key={index} onClick={() => loadUser(index)}>
           {editUser === index ? 
             <div>
               <input type='text' className='input' value={value.name} 

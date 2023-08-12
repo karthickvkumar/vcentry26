@@ -26,6 +26,7 @@ import "bootstrap/dist/js/bootstrap";
 //npm i bootstrap-icons -s
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./css/style.css";
+import LoadIndividualUserScreen from "./screens/load-individual-user";
 
 const App = () => {
   return(
@@ -49,6 +50,7 @@ const App = () => {
         <Route path="email" element={<EmailSendPage></EmailSendPage>}></Route>
         <Route path="verify/:token" element={<VerifyEmailPage></VerifyEmailPage>}></Route>
 
+        <Route path="user/profile/:index" element={<LoadIndividualUserScreen></LoadIndividualUserScreen>}></Route>
 
         <Route path="*" element={<PageNotFoundScreen></PageNotFoundScreen>}></Route>
       </Routes>

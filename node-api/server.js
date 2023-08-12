@@ -63,6 +63,15 @@ app.put("/api/edit/:index", (request, response) => {
 
 })
 
+// http://localhost:4000/api/user/1
+app.get("/api/user/:index", (request, response) => {
+  var index = request.params.index;
+
+  var user = studentList[index];
+  response.status(200).send(user);
+
+})
+
 
 const portNumber = 4000;
 server.listen(portNumber, () => {
