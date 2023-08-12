@@ -71,8 +71,26 @@ const AccountProfileScreen = () => {
     updateEditUser(index);
   }
 
-  const undoWriteUserInfo = () => {
+  const editExistingUser = (index, event) => {
+    studentList[index][event.target.id] = event.target.value;
+    updateStudentList([...studentList]);
+  }
+
+
+  const saveEditedUser = (index) => {
     updateEditUser(undefined);
+
+    const url = "http://localhost:4000/api/edit/" + index;
+
+    const editiedUser = studentList[index];
+
+    axios.put(url, editiedUser)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
   }
 
   const list = studentList.map((value, index) => {
@@ -80,8 +98,9 @@ const AccountProfileScreen = () => {
         <div className='user-content' key={index}>
           {editUser === index ? 
             <div>
-              <input type='text' className='input' />
-              <input type='text' className='input'/>
+              <input type='text' className='input' value={value.name} 
+                onChange={editExistingUser.bind(this, index)} id="name"/>
+              <input type='text' className='input'  value={value.location} onChange={editExistingUser.bind(this, index)} id="location"/>
             </div>
             :
             <div>
@@ -91,13 +110,13 @@ const AccountProfileScreen = () => {
             }
           <div>
           {editUser === index ? 
-            <i class="bi bi-check-circle-fill" onClick={() => undoWriteUserInfo()}></i>
+            <i class="bi bi-check-circle-fill" onClick={() => saveEditedUser(index)}></i>
             :
             <i class="bi bi-pencil-fill" onClick={() => rewriteUserInfo(index)}></i>
           }
 
 
-            <i class="bi bi-trash-fill" onClick={() => rewriteUserInfo(value)}></i>
+            <i class="bi bi-trash-fill" onClick={() => deleteUser(value)}></i>
 
           </div>
         </div>

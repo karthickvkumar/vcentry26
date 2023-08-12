@@ -53,6 +53,16 @@ app.delete("/api/delete/:name", (request, response) => {
    }
 });
 
+// http://localhost:4000/api/edit/1
+app.put("/api/edit/:index", (request, response) => {
+  let index = request.params.index;
+  let data = request.body;
+  studentList[index] = data;
+
+  response.status(200).send("User updated successfully");
+
+})
+
 
 const portNumber = 4000;
 server.listen(portNumber, () => {
