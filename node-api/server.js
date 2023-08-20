@@ -84,3 +84,20 @@ GET all Users - https://dummyjson.com/users
 
 GET Single User - https://dummyjson.com/users/1
 */
+
+/*
+SQL Query
+
+create database practice_db;
+===================================
+show databases;
+===================================
+
+use practice_db;
+create table sample_table(name varchar(255), location varchar(255), id int not null auto_increment, primary key(id));
+===================================
+
+use practice_db;
+select * from sample_table;
+
+*/
