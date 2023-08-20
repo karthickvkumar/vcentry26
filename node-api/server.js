@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import http from "http";
+import mysql from "mysql";
 
 const app = express();
 
@@ -14,6 +15,23 @@ app.use(
 );
 
 app.use(express.json());
+
+const connection = mysql.createConnection({
+  host : "localhost",
+  user: "root",
+  password: "Test@123",
+  port : 3306,
+  database : "practice_db"
+});
+
+connection.connect((error) => {
+  if(error){
+    throw error;
+  }
+  else{
+    console.log("MySQL DataBase connected with NodeJS");
+  }
+})
 
 const studentList = [
   { name: "Muthu", location: "Chennai" },
@@ -99,5 +117,21 @@ create table sample_table(name varchar(255), location varchar(255), id int not n
 
 use practice_db;
 select * from sample_table;
+
+=================================
+
+use practice_db;
+insert into sample_table (name, location) values ('Vinod', 'Chennai');
+
+
+*/
+
+/*
+Client does not support authentication protocol requested by server; consider upgrading MySQL client
+
+Run the below command and Run it in MySQL workbench
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'your_password';
+flush privileges;
 
 */
