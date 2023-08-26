@@ -16,12 +16,20 @@ app.use(
 
 app.use(express.json());
 
+// const connection = mysql.createConnection({
+//   host : "localhost",
+//   user: "root",
+//   password: "Test@123",
+//   port : 3306,
+//   database : "practice_db"
+// });
+
 const connection = mysql.createConnection({
-  host : "localhost",
-  user: "root",
-  password: "Test@123",
-  port : 3306,
-  database : "practice_db"
+  host : "db4free.net",
+  user: "vcentry",
+  password : "test@123",
+  database : "travelix",
+  port : 3306
 });
 
 connection.connect((error) => {
@@ -41,10 +49,21 @@ const studentList = [
   { name: "Tharun", location: "Chennai" }
 ];
 
+// GET Method
 // http://localhost:4000/api/list
 app.get("/api/list", (request, response) => {
+ 
+  const sqlQuery = "select * from karthick_table";
 
-  response.status(200).send(studentList);
+  connection.query(sqlQuery, (error, result) => {
+    if(error){
+      response.status(500).send(error);
+    }
+    else{
+      response.status(200).send(result);
+    }
+  })
+
 });
 
 // http://localhost:4000/api/create/list
