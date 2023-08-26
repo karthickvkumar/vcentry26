@@ -64,14 +64,35 @@ app.get("/api/list", (request, response) => {
     }
   })
 
+  //response.status(200).send(studentList);
 });
 
+//POST Method
 // http://localhost:4000/api/create/list
 app.post("/api/create/list", (request, response) => {
-  console.log(request.body);
-  studentList.push(request.body);
 
-  response.status(200).send("Student profile has been Created");
+  const requestedName = request.body.name;
+  const requestedLocation = request.body.location;
+
+  const sqlQuery = `insert into karthick_table (name, location) values ('${requestedName}', '${requestedLocation}')`;
+
+  connection.query(sqlQuery, (error, result) => {
+    if(error){
+      response.status(500).send(error);
+    }
+    else{
+      response.status(200).send({
+        sqlResult : result,
+        message : "User account has been created successfully"
+      })
+    }
+  })
+
+
+
+  // console.log(request.body);
+  // studentList.push(request.body);
+  // response.status(200).send("Student profile has been Created");
 })
 
 // http://localhost:4000/api/delete/karthick

@@ -48,7 +48,8 @@ const AccountProfileScreen = () => {
 
     axios.post(url, studentForm)
       .then((response) => {
-        alert(response.data);
+        // console.log(response.data);
+        alert(response.data.message);
         loadStudent();
       })
       .catch((error) => {
