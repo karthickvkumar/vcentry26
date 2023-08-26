@@ -96,28 +96,64 @@ app.post("/api/create/list", (request, response) => {
 })
 
 // http://localhost:4000/api/delete/karthick
-app.delete("/api/delete/:name", (request, response) => {
-  var name = request.params.name;
-  var index = studentList.findIndex((value, index) => {
-     return value.name === name
-   });
+// app.delete("/api/delete/:name", (request, response) => {
+//   var name = request.params.name;
+//   var index = studentList.findIndex((value, index) => {
+//      return value.name === name
+//    });
 
-   if(index > -1) {
-    studentList.splice(index, 1);
-    response.status(200).send("Successfully deleted");
-   }
-   else{
-    response.status(400).send("Invalid User Name or Selection");
-   }
-});
+//    if(index > -1) {
+//     studentList.splice(index, 1);
+//     response.status(200).send("Successfully deleted");
+//    }
+//    else{
+//     response.status(400).send("Invalid User Name or Selection");
+//    }
+// });
+
+app.delete("/api/delete/:id", (request, response) => {
+  const id = request.params.id;
+
+  const sqlQuery = `DELETE FROM karthick_table WHERE id=${id}`;
+
+  connection.query(sqlQuery, (error, result) => {
+    if(error){
+      response.status(500).send(error);
+    }
+    else{
+      response.status(200).send({
+        sqlResult : result,
+        message : "User account has been deleted successfully"
+      })
+    }
+  })
+
+})
 
 // http://localhost:4000/api/edit/1
-app.put("/api/edit/:index", (request, response) => {
-  let index = request.params.index;
-  let data = request.body;
-  studentList[index] = data;
+app.put("/api/edit/:id", (request, response) => {
+  let id = request.params.id;
 
-  response.status(200).send("User updated successfully");
+  const requestedName = request.body.name;
+  const requestedLocation = request.body.location;
+
+  const sqlQuery = `UPDATE karthick_table SET name='${requestedName}', location='${requestedLocation}' WHERE id=${id};`;
+
+  connection.query(sqlQuery, (error, result) => {
+    if(error){
+      response.status(500).send(error);
+    }
+    else{
+      response.status(200).send({
+        sqlResult : result,
+        message : "User account has been Updated successfully"
+      })
+    }
+  })
+
+  // let data = request.body;
+  // studentList[index] = data;
+  // response.status(200).send("User updated successfully");
 
 })
 
@@ -170,6 +206,15 @@ select * from sample_table;
 use practice_db;
 insert into sample_table (name, location) values ('Vinod', 'Chennai');
 
+========================================
+
+USE travelix;
+UPDATE karthick_table SET name='John', location='NYC' WHERE id=6;
+
+===================================================
+
+use travelix;
+DELETE FROM karthick_table WHERE id=12
 
 */
 

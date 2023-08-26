@@ -59,11 +59,11 @@ const AccountProfileScreen = () => {
 
   const deleteUser = (value) =>{
     // console.log(value);
-    const url = "http://localhost:4000/api/delete/" + value.name;
+    const url = "http://localhost:4000/api/delete/" + value.id;
 
     axios.delete(url)
       .then((response) => {
-        alert(response.data);
+        alert(response.data.message);
         loadStudent();
       })
       .catch((error) => {
@@ -81,10 +81,14 @@ const AccountProfileScreen = () => {
   }
 
 
-  const saveEditedUser = (index) => {
+  const saveEditedUser = (id) => {
     updateEditUser(undefined);
 
-    const url = "http://localhost:4000/api/edit/" + index;
+    const url = "http://localhost:4000/api/edit/" + id;
+
+    var index = studentList.findIndex((value) => {
+      return value.id == id
+    });
 
     const editiedUser = studentList[index];
 
@@ -103,7 +107,7 @@ const AccountProfileScreen = () => {
 
   const list = studentList.map((value, index) => {
     return(
-        <div className='user-content' key={index} onClick={() => loadUser(index)}>
+        <div className='user-content' key={index}>
           {editUser === index ? 
             <div>
               <input type='text' className='input' value={value.name} 
@@ -118,7 +122,7 @@ const AccountProfileScreen = () => {
             }
           <div>
           {editUser === index ? 
-            <i class="bi bi-check-circle-fill" onClick={() => saveEditedUser(index)}></i>
+            <i class="bi bi-check-circle-fill" onClick={() => saveEditedUser(value.id)}></i>
             :
             <i class="bi bi-pencil-fill" onClick={() => rewriteUserInfo(index)}></i>
           }
