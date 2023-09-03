@@ -1,6 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-const HotelSearchComponent = () => {
+const HotelSearchComponent = (props) => {
+
+    const [hotelSearch, updateHotelSearch] = useState({
+        destination : "",
+        checkIn : "",
+        checkOut : "",
+        priceLimit : ""
+    })
+
+    const handleInput = (event) => {
+        updateHotelSearch({...hotelSearch, [event.target.id] : event.target.value});
+    }
+
+    const searchHotels = () => {
+        props.callback(hotelSearch);
+    }
+
     return (
         <div
             className="tab-pane show active"
@@ -21,6 +37,8 @@ const HotelSearchComponent = () => {
                                     type="text"
                                     className="form-control"
                                     placeholder="Search place"
+                                    id="destination"
+                                    onChange={handleInput}
                                 />
                             </div>
                         </div>
@@ -33,9 +51,11 @@ const HotelSearchComponent = () => {
                                     <span className="fa fa-calendar"></span>
                                 </div>
                                 <input
-                                    type="text"
+                                    type="date"
                                     className="form-control checkin_date"
                                     placeholder="Check In Date"
+                                    id="checkIn"
+                                    onChange={handleInput}
                                 />
                             </div>
                         </div>
@@ -48,9 +68,11 @@ const HotelSearchComponent = () => {
                                     <span className="fa fa-calendar"></span>
                                 </div>
                                 <input
-                                    type="text"
+                                    type="date"
                                     className="form-control checkout_date"
                                     placeholder="Check Out Date"
+                                    id="checkOut"
+                                    onChange={handleInput}
                                 />
                             </div>
                         </div>
@@ -65,23 +87,24 @@ const HotelSearchComponent = () => {
                                     </div>
                                     <select
                                         name=""
-                                        id=""
+                                        id="priceLimit"
                                         className="form-control"
+                                        onChange={handleInput}
                                     >
-                                        <option value="">$100</option>
-                                        <option value="">$10,000</option>
-                                        <option value="">$50,000</option>
-                                        <option value="">$100,000</option>
-                                        <option value="">$200,000</option>
-                                        <option value="">$300,000</option>
-                                        <option value="">$400,000</option>
-                                        <option value="">$500,000</option>
-                                        <option value="">$600,000</option>
-                                        <option value="">$700,000</option>
-                                        <option value="">$800,000</option>
-                                        <option value="">$900,000</option>
-                                        <option value="">$1,000,000</option>
-                                        <option value="">$2,000,000</option>
+                                        <option>$100</option>
+                                        <option>$10,000</option>
+                                        <option>$50,000</option>
+                                        <option>$100,000</option>
+                                        <option>$200,000</option>
+                                        <option>$300,000</option>
+                                        <option>$400,000</option>
+                                        <option>$500,000</option>
+                                        <option>$600,000</option>
+                                        <option>$700,000</option>
+                                        <option>$800,000</option>
+                                        <option>$900,000</option>
+                                        <option>$1,000,000</option>
+                                        <option>$2,000,000</option>
                                     </select>
                                 </div>
                             </div>
@@ -91,9 +114,10 @@ const HotelSearchComponent = () => {
                         <div className="form-group d-flex w-100 border-0">
                             <div className="form-field w-100 align-items-center d-flex">
                                 <input
-                                    type="submit"
+                                    type="button"
                                     value="Search"
                                     className="align-self-stretch form-control btn btn-primary"
+                                    onClick={() => searchHotels()}
                                 />
                             </div>
                         </div>

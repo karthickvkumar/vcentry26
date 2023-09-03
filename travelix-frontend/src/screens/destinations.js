@@ -21,6 +21,12 @@ const DestinationScreen = () => {
     }
   ]
 
+  const searchTourAPI = (filterValue) => {
+    // axios api call
+    // debugger;
+    console.log(filterValue);
+  }
+
   return (
     <div>
       <HeaderComponent></HeaderComponent>
@@ -44,7 +50,7 @@ const DestinationScreen = () => {
           <div className="row">
             <div className="col-md-12">
               <div className="search-wrap-1">
-                <TourSearchComponent></TourSearchComponent>
+                <TourSearchComponent callback={searchTourAPI}></TourSearchComponent>
               </div>
             </div>
           </div>

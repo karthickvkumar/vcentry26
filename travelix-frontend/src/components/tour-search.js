@@ -1,6 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-const TourSearchComponent = () => {
+const TourSearchComponent = (props) => {
+
+    const [tourSearch, updateTourSearch] = useState({
+        destination : "",
+        location : ""
+    })
+
+    const handleInput = (event) => {
+        updateTourSearch({...tourSearch, [event.target.id] : event.target.value});
+    }
+
+    const searchTour = () => {
+        // console.log(tourSearch);
+        // debugger;
+        props.callback(tourSearch);
+    }
+
     return (
         <div
             className="tab-pane show"
@@ -21,6 +37,8 @@ const TourSearchComponent = () => {
                                     type="text"
                                     className="form-control"
                                     placeholder="Search place"
+                                    id='destination'
+                                    onChange={handleInput}
                                 />
                             </div>
                         </div>
@@ -36,6 +54,8 @@ const TourSearchComponent = () => {
                                     type="text"
                                     className="form-control"
                                     placeholder="Search place"
+                                    id='location'
+                                    onChange={handleInput}
                                 />
                             </div>
                         </div>
@@ -44,9 +64,10 @@ const TourSearchComponent = () => {
                         <div className="form-group d-flex w-100 border-0">
                             <div className="form-field w-100 align-items-center d-flex">
                                 <input
-                                    type="submit"
+                                    type="button"
                                     value="Search"
                                     className="align-self-stretch form-control btn btn-primary p-0"
+                                    onClick={() => searchTour()}
                                 />
                             </div>
                         </div>

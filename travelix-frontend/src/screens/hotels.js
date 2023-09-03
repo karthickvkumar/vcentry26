@@ -37,6 +37,11 @@ const HotelScreen = () => {
     }
   ]
 
+  const searchHotelAPI = (filterSearch) => {
+    // future axios call
+    console.log(filterSearch);
+  }
+
   return (
     <div>
       <HeaderComponent></HeaderComponent>
@@ -59,7 +64,7 @@ const HotelScreen = () => {
           <div className="row">
             <div className="col-md-12">
               <div className="search-wrap-1">
-                <HotelSearchComponent></HotelSearchComponent>
+                <HotelSearchComponent callback={searchHotelAPI}></HotelSearchComponent>
               </div>
             </div>
           </div>
