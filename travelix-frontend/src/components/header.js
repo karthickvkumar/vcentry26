@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const HeaderComponent = () => {
   return (
@@ -24,31 +25,31 @@ const HeaderComponent = () => {
 
         <div className="collapse navbar-collapse" id="ftco-nav">
           <ul className="navbar-nav ml-auto">
-            <li className="nav-item active">
-              <a href="index.html" className="nav-link">
+            <NavLink to="/" className={({isActive}) =>  isActive ? "nav-item active" : "nav-item"}>
+              <li className="nav-link">
                 Home
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="about.html" className="nav-link">
+              </li>
+            </NavLink>
+            <NavLink to="/about" className={({isActive}) =>  isActive ? "nav-item active" : "nav-item"}>
+              <li className="nav-link">
                 About
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="destination.html" className="nav-link">
+              </li>
+            </NavLink>
+            <NavLink to="/destination" className={({isActive}) =>  isActive ? "nav-item active" : "nav-item"}>
+              <li className="nav-link">
                 Destination
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="hotel.html" className="nav-link">
+              </li>
+            </NavLink>
+            <NavLink to="/hotels" className={({isActive}) =>  isActive ? "nav-item active" : "nav-item"}>
+              <li className="nav-link">
                 Hotel
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="contact.html" className="nav-link">
+              </li>
+            </NavLink>
+            <NavLink to="/contact" className={({isActive}) =>  isActive ? "nav-item active" : "nav-item"}>
+              <li className="nav-link">
                 Contact
-              </a>
-            </li>
+              </li>
+            </NavLink>
           </ul>
         </div>
       </div>

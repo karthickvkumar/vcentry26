@@ -28,3 +28,11 @@ const App = () => {
 }
 
 export default App;
+
+// Data Sharing
+
+// 1. Parent Component -> Child Component = using props keyword 
+
+// 2. Child Component -> Parent Component = using callback technique 
+
+// 3. Inbetween Siblings or Un-Related = using Context API
