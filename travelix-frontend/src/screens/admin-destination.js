@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
 const AdminDestination = () => {
@@ -8,6 +8,23 @@ const AdminDestination = () => {
         destinationImage : "",
         destinationCount : ""
     });
+
+    const [destinationList, updateDestinationList] = useState([]);
+
+    useEffect(() => {
+        loadDestinationList();
+    }, []);
+
+    const loadDestinationList = () => {
+        const url = "http://localhost:4000/api/list/destination";
+        axios.get(url)
+            .then((response) => {
+                updateDestinationList(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
 
     const handleInputField = (event) => {
         updateDestination({...destination, [event.target.id] : event.target.value});
@@ -19,6 +36,7 @@ const AdminDestination = () => {
 
         axios.post(url, destination)
             .then((response) => {
+                loadDestinationList();
                 alert(response.data.message);
             })
             .catch((error) => {
@@ -38,6 +56,18 @@ const AdminDestination = () => {
         }
     }
 
+    const deleteDestination = (id) => {
+        const url = "http://localhost:4000/api/delete/destination/" + id;
+
+        axios.delete(url)
+            .then((response) => {
+                loadDestinationList();
+                alert(response.data.message);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
 
     return (
         <div>
@@ -55,6 +85,32 @@ const AdminDestination = () => {
                 <input type='file' accept='.png,.jpg,.jpeg' id="destinationImage" onChange={uploadImage}/>
             </div>
             <button onClick={() => addNewDestionation()}>Add New Destination</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Destination Name</th>
+                        <th>Destination Count</th>
+                        <th>Destination Image</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   {
+                    destinationList.map((value, index) => {
+                        return(
+                            <tr key={index}>
+                                <td>{value.destinationName}</td>
+                                <td>{value.destinationCount}</td>
+                                <td>
+                                    <img src={value.destinationImage}  width="50"/>
+                                </td>
+                                <td> <button onClick={() => deleteDestination(value.id)}>Delete</button> </td>
+                            </tr>
+                        )
+                    })
+                   }
+                </tbody>
+            </table>
         </div>
     );
 };
