@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import axios from 'axios';
 
 const AdminDestination = () => {
 
@@ -14,6 +15,15 @@ const AdminDestination = () => {
 
     const addNewDestionation = () => {
         console.log(destination);
+        const url = "http://localhost:4000/api/upload/destination";
+
+        axios.post(url, destination)
+            .then((response) => {
+                alert(response.data.message);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
 
     const uploadImage = (event) => {

@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import axios from 'axios';
 
 const AdminHotel = () => {
     const [hotel, updateHotel] = useState({
@@ -13,7 +14,16 @@ const AdminHotel = () => {
     }
 
     const addNewHotel = () => {
-        console.log(hotel);
+        // console.log(hotel);
+        const url = "http://localhost:4000/api/upload/hotel";
+
+        axios.post(url, hotel)
+            .then((response) => {
+                alert(response.data.message);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
 
     const uploadImage = (event) => {
