@@ -55,9 +55,22 @@ app.post("/api/upload/destination", (request, response) => {
     })
 });
 
+// Search Destination
+// http://localhost:4000/api/list/destination?destinationName=india
+
+// Show All Destination
 // http://localhost:4000/api/list/destination
 app.get("/api/list/destination", (request, response) => {
-    const sqlQuery = "select * from karthick_destinations";
+
+    let sqlQuery;
+    const destName = request.query.destinationName;
+    if(destName == undefined){
+        sqlQuery = "select * from karthick_destinations";
+    }
+    else{
+        sqlQuery = `select * from karthick_destinations where destinationName='${destName}'`
+    }
+    
     connection.query(sqlQuery, (error, result) => {
         if(error){
             response.status(500).send(error);
@@ -107,10 +120,20 @@ app.post("/api/upload/hotel", (request, response) => {
     })
 });
 
+// Search Hotels
+// http://localhost:4000/api/list/hotels?hotelName=""
+
+//Get All Hotels
 // http://localhost:4000/api/list/hotels
 app.get("/api/list/hotels", (request, response) => {
-    const sqlQuery = "select * from karthick_hotels";
-
+    let sqlQuery;
+    const hotelName = request.query.hotelName;
+    if(hotelName == undefined){
+        sqlQuery = "select * from karthick_hotels";
+    }
+    else{
+        sqlQuery = `select * from karthick_hotels where hotelName='${hotelName}'`
+    }
     connection.query(sqlQuery, (error, result) => {
         if(error){
             response.status(500).send(error);

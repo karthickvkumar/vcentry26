@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 import HeaderComponent from "../components/header";
 import FooterComponent from '../components/footer';
@@ -7,40 +8,38 @@ import HotelSearchComponent from "../components/hotel-search";
 
 const HotelScreen = () => {
 
-  const hotelList = [
-    {
-      hotel_price : "200",
-      hotel_image : require("../images/hotel-resto-1.jpg"),
-      hotel_name : "Manila Hotel",
-      hotel_location: "Manila, Philippines",
-      room_count : 2,
-      room_bed_count : 1,
-      room_facing : "Mountain Facing"
-    },
-    {
-      hotel_price : "400",
-      hotel_image : require("../images/hotel-resto-8.jpg"),
-      hotel_name : "Taj Hotel",
-      hotel_location: "Mumbai, India",
-      room_count : 2,
-      room_bed_count : 1,
-      room_facing : "Sea Facing"
-    },
-    {
-      hotel_price : "150",
-      hotel_image : require("../images/hotel-resto-2.jpg"),
-      hotel_name : "Accord Hotel",
-      hotel_location: "Newyork, US",
-      room_count : 2,
-      room_bed_count : 1,
-      room_facing : "Mountain Facing"
-    }
-  ]
+  const baseURL = "http://localhost:4000/api";
+  const [hotelList, updateHotelList] = useState([]);
+
+  useEffect(() => {
+    getAllHotels();
+  }, []);
 
   const searchHotelAPI = (filterSearch) => {
     // future axios call
     console.log(filterSearch);
+    const url = baseURL + "/list/hotels?hotelName=" + filterSearch.destination;
+
+    axios.get(url)
+        .then((response) => {
+          updateHotelList(response.data);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
   }
+
+  const getAllHotels = () => {
+    const url = baseURL + "/list/hotels";
+
+    axios.get(url)
+        .then((response) => {
+          updateHotelList(response.data);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+}
 
   return (
     <div>

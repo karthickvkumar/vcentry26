@@ -1,30 +1,46 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import HeaderComponent from "../components/header";
 import DestinationComponent from '../components/destination-list';
 import FooterComponent from '../components/footer';
 import TourSearchComponent from "../components/tour-search";
+import axios from 'axios';
 
 const DestinationScreen = () => {
 
-  const destinationList = [ 
-    { tour_location: "India",
-      tour_image : "https://images.nationalgeographic.org/image/upload/v1638889927/EducationHub/photos/pebble-beach.jpg",
-      tour_count : 10
-    },
-    { tour_location: "America",
-      tour_image : "https://m.economictimes.com/thumb/msid-75933565,width-1200,height-900,resizemode-4,imgsize-208887/us-flag-getty.jpg",
-      tour_count : 20
-    },
-    { tour_location: "France",
-      tour_image : "https://images.adsttc.com/media/images/5d44/14fa/284d/d1fd/3a00/003d/large_jpg/eiffel-tower-in-paris-151-medium.jpg",
-      tour_count : 15
-    }
-  ]
+  const [destinationList, updateDestinationList] = useState([]);
+
+  useEffect(() => {
+    getAllHotels();
+  }, []); 
+  
+  const getAllHotels = () => {
+    const url = "http://localhost:4000/api/list/destination";
+
+    axios.get(url)
+        .then((response) => {
+          updateDestinationList(response.data);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+  }
+
+
 
   const searchTourAPI = (filterValue) => {
     // axios api call
     // debugger;
-    console.log(filterValue);
+    // console.log(filterValue);
+    const url = "http://localhost:4000/api/list/destination?destinationName=" + filterValue.destination;
+
+    axios.get(url)
+      .then((response) => {
+        updateDestinationList(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+
   }
 
   return (
@@ -71,7 +87,7 @@ const DestinationScreen = () => {
              
             
           </div>
-          <div className="row mt-5">
+          {/* <div className="row mt-5">
             <div className="col text-center">
               <div className="block-27">
                 <ul>
@@ -85,7 +101,7 @@ const DestinationScreen = () => {
                 </ul>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 
