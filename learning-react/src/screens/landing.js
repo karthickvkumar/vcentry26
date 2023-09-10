@@ -29,8 +29,9 @@ const LandingScreen = () => {
       <NavLink to="/signin">Go to Register Screen</NavLink>
       <br/>
       <NavLink to="/image">Go to Conditional Rendering</NavLink>
-
+      
       <br/>
+      <NavLink to="/page1">Go to UnRelated One Page</NavLink>
       
     </div>
   )

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 
 import HomeScreen from "./screens/home";
@@ -28,33 +28,50 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import "./css/style.css";
 import LoadIndividualUserScreen from "./screens/load-individual-user";
 
+import UnrelatedOneScreen from "./screens/unrelated-one";
+import UnrelatedTwoScreen from "./screens/unrelated-two";
+
+import DataSharing from "./context/data-sharing";
+
 const App = () => {
+
+  const [data, updateData] = useState([]);
+
+  const exchangeData = (value) => {
+    updateData(value);
+  }
+
   return(
-    <BrowserRouter>
-      <Routes>
-        <Route path="" element={<LandingScreen></LandingScreen>}></Route>
-        <Route path="home" element={<HomeScreen></HomeScreen>}></Route>
-        <Route path="login" element={<LoginScreen></LoginScreen>}></Route>
-        <Route path="contact" element={<ContactScreen></ContactScreen>}></Route>
-        <Route path="profile" element={<ProfileScreen></ProfileScreen>}>
-            <Route path="basic" element={<BasicProfileScreen></BasicProfileScreen>}></Route>
-            <Route path="account" element={<AccountProfileScreen></AccountProfileScreen>}></Route>
-            <Route path="setting" element={<SettingProfileScreen></SettingProfileScreen>}></Route>
-            <Route path="login" element={<LoginProfile></LoginProfile>}></Route>
-        </Route>
+    <DataSharing.Provider value={{ callback : exchangeData , todo : data}}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="" element={<LandingScreen></LandingScreen>}></Route>
+          <Route path="home" element={<HomeScreen></HomeScreen>}></Route>
+          <Route path="login" element={<LoginScreen></LoginScreen>}></Route>
+          <Route path="contact" element={<ContactScreen></ContactScreen>}></Route>
+          <Route path="profile" element={<ProfileScreen></ProfileScreen>}>
+              <Route path="basic" element={<BasicProfileScreen></BasicProfileScreen>}></Route>
+              <Route path="account" element={<AccountProfileScreen></AccountProfileScreen>}></Route>
+              <Route path="setting" element={<SettingProfileScreen></SettingProfileScreen>}></Route>
+              <Route path="login" element={<LoginProfile></LoginProfile>}></Route>
+          </Route>
 
-        <Route path="todo" element={<TodoListScreen></TodoListScreen>}></Route>
-        <Route path="signin" element={<RegisterScreen></RegisterScreen>}></Route>
-        <Route path="image" element={<ConditionalRendering></ConditionalRendering>}></Route>
+          <Route path="todo" element={<TodoListScreen></TodoListScreen>}></Route>
+          <Route path="signin" element={<RegisterScreen></RegisterScreen>}></Route>
+          <Route path="image" element={<ConditionalRendering></ConditionalRendering>}></Route>
 
-        <Route path="email" element={<EmailSendPage></EmailSendPage>}></Route>
-        <Route path="verify/:token" element={<VerifyEmailPage></VerifyEmailPage>}></Route>
+          <Route path="email" element={<EmailSendPage></EmailSendPage>}></Route>
+          <Route path="verify/:token" element={<VerifyEmailPage></VerifyEmailPage>}></Route>
 
-        <Route path="user/profile/:index" element={<LoadIndividualUserScreen></LoadIndividualUserScreen>}></Route>
+          <Route path="user/profile/:index" element={<LoadIndividualUserScreen></LoadIndividualUserScreen>}></Route>
 
-        <Route path="*" element={<PageNotFoundScreen></PageNotFoundScreen>}></Route>
-      </Routes>
-    </BrowserRouter>
+          <Route path="page1" element={<UnrelatedOneScreen></UnrelatedOneScreen>}></Route>
+          <Route path="page2" element={<UnrelatedTwoScreen></UnrelatedTwoScreen>}></Route>
+
+          <Route path="*" element={<PageNotFoundScreen></PageNotFoundScreen>}></Route>
+        </Routes>
+      </BrowserRouter>
+    </DataSharing.Provider>
   )
 }
 

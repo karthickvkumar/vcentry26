@@ -8,7 +8,8 @@ import HotelSearchComponent from "../components/hotel-search";
 
 const HotelScreen = () => {
 
-  const baseURL = "http://localhost:4000/api";
+  // const baseURL = "http://localhost:4000/api";
+  const baseURL = "https://travelix-api.onrender.com/api";
   const [hotelList, updateHotelList] = useState([]);
 
   useEffect(() => {
@@ -83,7 +84,7 @@ const HotelScreen = () => {
           }
             
           </div>
-          <div className="row mt-5">
+          {/* <div className="row mt-5">
             <div className="col text-center">
               <div className="block-27">
                 <ul>
@@ -97,7 +98,7 @@ const HotelScreen = () => {
                 </ul>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 

@@ -3,6 +3,9 @@ import axios from 'axios';
 
 const AdminDestination = () => {
 
+    // const baseURL = "http://localhost:4000/api";
+    const baseURL = "https://travelix-api.onrender.com/api";
+
     const [destination, updateDestination] = useState({
         destinationName : "",
         destinationImage : "",
@@ -16,7 +19,7 @@ const AdminDestination = () => {
     }, []);
 
     const loadDestinationList = () => {
-        const url = "http://localhost:4000/api/list/destination";
+        const url = baseURL+ "/list/destination";
         axios.get(url)
             .then((response) => {
                 updateDestinationList(response.data);
@@ -32,7 +35,7 @@ const AdminDestination = () => {
 
     const addNewDestionation = () => {
         console.log(destination);
-        const url = "http://localhost:4000/api/upload/destination";
+        const url = baseURL+ "/upload/destination";
 
         axios.post(url, destination)
             .then((response) => {
@@ -57,7 +60,7 @@ const AdminDestination = () => {
     }
 
     const deleteDestination = (id) => {
-        const url = "http://localhost:4000/api/delete/destination/" + id;
+        const url = baseURL+ "/delete/destination/" + id;
 
         axios.delete(url)
             .then((response) => {

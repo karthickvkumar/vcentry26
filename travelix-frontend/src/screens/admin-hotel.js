@@ -2,6 +2,9 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
 const AdminHotel = () => {
+    // const baseURL = "http://localhost:4000/api";
+  const baseURL = "https://travelix-api.onrender.com/api";
+
     const [hotel, updateHotel] = useState({
         hotelName : "",
         hotelPrice : "",
@@ -21,7 +24,7 @@ const AdminHotel = () => {
 
     const addNewHotel = () => {
         // console.log(hotel);
-        const url = "http://localhost:4000/api/upload/hotel";
+        const url = baseURL + "/upload/hotel";
 
         axios.post(url, hotel)
             .then((response) => {
@@ -46,7 +49,7 @@ const AdminHotel = () => {
     }
 
     const getAllHotels = () => {
-        const url = "http://localhost:4000/api/list/hotels";
+        const url = baseURL + "/list/hotels";
 
         axios.get(url)
             .then((response) => {
@@ -58,7 +61,7 @@ const AdminHotel = () => {
     }
 
     const deleteHotel = (id) => {
-        const url = "http://localhost:4000/api/delete/hotel/" + id;
+        const url = baseURL + "/delete/hotel/" + id;
         axios.delete(url)
             .then((response) => {
                 getAllHotels();

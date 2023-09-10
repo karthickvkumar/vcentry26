@@ -7,6 +7,9 @@ import axios from 'axios';
 
 const DestinationScreen = () => {
 
+  // const baseURL = "http://localhost:4000/api";
+  const baseURL = "https://travelix-api.onrender.com/api";
+
   const [destinationList, updateDestinationList] = useState([]);
 
   useEffect(() => {
@@ -14,7 +17,7 @@ const DestinationScreen = () => {
   }, []); 
   
   const getAllHotels = () => {
-    const url = "http://localhost:4000/api/list/destination";
+    const url = baseURL+"/list/destination";
 
     axios.get(url)
         .then((response) => {
@@ -31,7 +34,7 @@ const DestinationScreen = () => {
     // axios api call
     // debugger;
     // console.log(filterValue);
-    const url = "http://localhost:4000/api/list/destination?destinationName=" + filterValue.destination;
+    const url = baseURL+"/list/destination?destinationName=" + filterValue.destination;
 
     axios.get(url)
       .then((response) => {
