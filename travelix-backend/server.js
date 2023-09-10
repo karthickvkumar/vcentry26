@@ -107,6 +107,39 @@ app.post("/api/upload/hotel", (request, response) => {
     })
 });
 
+// http://localhost:4000/api/list/hotels
+app.get("/api/list/hotels", (request, response) => {
+    const sqlQuery = "select * from karthick_hotels";
+
+    connection.query(sqlQuery, (error, result) => {
+        if(error){
+            response.status(500).send(error);
+        }
+        else{
+            response.status(200).send(result);
+        }
+    })
+})
+
+// http://localhost:4000/api/delete/hotel/2
+app.delete("/api/delete/hotel/:id", (request, response) => {
+    const id = request.params.id;
+
+    const sqlQuery = `delete from karthick_hotels where id=${id}`;
+
+    connection.query(sqlQuery, (error, result) => {
+        if(error){
+            response.status(500).send(error);
+        }
+        else{
+            response.status(200).send({
+                message : "Hotel has been deleted"
+            })
+        }
+    })
+
+})
+
 const portNumber = 4000;
 server.listen(portNumber, () => {
     console.log("Server is running on Port " + portNumber);

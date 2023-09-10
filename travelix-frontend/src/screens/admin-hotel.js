@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
 const AdminHotel = () => {
@@ -8,6 +8,12 @@ const AdminHotel = () => {
         hotelLocation : "",
         hotelImage : ""
     });
+
+    const [hotelList, updateHotelList] = useState([]);
+
+    useEffect(() => {
+        getAllHotels();
+    }, []);
 
     const handleInputField = (event) => {
         updateHotel({...hotel, [event.target.id] : event.target.value});
@@ -19,6 +25,7 @@ const AdminHotel = () => {
 
         axios.post(url, hotel)
             .then((response) => {
+                getAllHotels();
                 alert(response.data.message);
             })
             .catch((error) => {
@@ -36,6 +43,30 @@ const AdminHotel = () => {
             // console.log(reader.result);
             updateHotel({...hotel, [event.target.id] : reader.result});
         }
+    }
+
+    const getAllHotels = () => {
+        const url = "http://localhost:4000/api/list/hotels";
+
+        axios.get(url)
+            .then((response) => {
+                updateHotelList(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
+    const deleteHotel = (id) => {
+        const url = "http://localhost:4000/api/delete/hotel/" + id;
+        axios.delete(url)
+            .then((response) => {
+                getAllHotels();
+                alert(response.data.message);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
 
     return (
@@ -58,6 +89,37 @@ const AdminHotel = () => {
                 <input type='file' accept='.png,.jpg,.jpeg' id="hotelImage" onChange={uploadImage}/>
             </div>
             <button onClick={() => addNewHotel()}>Add New Hotel</button>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Hotel Name</th>
+                        <th>Hotel Location</th>
+                        <th>Hotel Price</th>
+                        <th>Hotel Image</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        hotelList.map((value, index) => {
+                            return(
+                                <tr key={index}>
+                                    <td>{value.hotelName}</td>
+                                    <td>{value.hotelLocation}</td>
+                                    <td>${value.hotelPrice}</td>
+                                    <td>
+                                        <img src={value.hotelImage} width="50" />
+                                    </td>
+                                    <td>
+                                        <button onClick={() => deleteHotel(value.id)}>Delete</button>
+                                    </td>
+                                </tr>
+                            )
+                        })
+                        }
+                </tbody>
+            </table>
         </div>
     );
 };
